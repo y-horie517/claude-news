@@ -11,6 +11,7 @@ Claude / Claude Code の使い方を毎日学ぶための、**自動生成され
 
 ## 読む場所
 
+- **Slack** — 各号が出ると、3行サマリーと見出しがチャンネルに届きます。本文へのボタン付き。
 - **Artifact（推奨）** — 朝刊・夕刊それぞれ**URLが固定**なので、ブックマークすれば毎日そこが最新号になります。URL は `state/artifact-urls.json` に記録されます。一覧は https://claude.ai/code/artifacts
 - **GitHub アーカイブ** — `digest/YYYY/MM/YYYY-MM-DD-{am,pm}.md`。過去号の全文検索はこちらで。図（Mermaid）はそのまま描画されます。
 
@@ -41,12 +42,30 @@ flowchart TD
 | `state/sources.md` | 巡回する情報源と、前回チェックした CHANGELOG バージョン |
 | `state/today.md` | 朝→夕の引き継ぎ（ミニ課題と模範解答） |
 | `state/artifact-urls.json` | 朝刊・夕刊の Artifact 固定URL |
+| `scripts/notify-slack.sh` | Slack Incoming Webhook への投稿。`SLACK_WEBHOOK_URL` 未設定なら黙ってスキップする |
+| `template/slack-am.json` / `slack-pm.json` | Slack 投稿の Block Kit テンプレート（朝＝青／夕＝蘇芳の色帯） |
+
+## Slack 通知のセットアップ
+
+**Webhook URL は絶対にこのリポジトリに書かないでください（public です）。** クラウド環境の環境変数に置きます。
+
+1. Slack で Incoming Webhook を作る — https://api.slack.com/apps → **Create New App** → *From scratch* → ワークスペースを選択 → **Incoming Webhooks** を On → **Add New Webhook to Workspace** → 投稿先チャンネルを選ぶ → `https://hooks.slack.com/services/T.../B.../...` をコピー
+2. claude.ai/code → 雲アイコン（環境セレクタ）→ **Default** の歯車 → **Environment variables** に1行足して保存:
+   ```
+   SLACK_WEBHOOK_URL=https://hooks.slack.com/services/T.../B.../...
+   ```
+3. 次の配信から自動で届きます。
+
+環境変数はその環境を使う人に見えます（秘密情報の保管庫ではありません）。**投稿先チャンネルを1つに絞った Webhook** にしておけば、漏れたときの影響はそのチャンネルへの投稿に限られ、Slack 側からいつでも失効させられます。
+
+止めたいときは環境変数を削除するだけです。エージェントは `SLACK_WEBHOOK_URL` がなければ通知をスキップして、記事の生成は通常どおり続けます。
 
 ## 運用
 
 - **停止・再開・削除**: https://claude.ai/code/routines （削除は Web UI からのみ）
 - **記事の内容を変えたい**: `prompts/*.md` を編集して push。routine 側の再設定は不要
 - **連載テーマを足したい**: `state/curriculum.md` に追記
+- **Slack の見た目を変えたい**: `template/slack-*.json` を編集（Block Kit Builder で組んで貼り付けると早い）
 - **今すぐ1号出したい**: routine の「今すぐ実行」
 - routine は**失効しません**（セッション内 cron と違い永続）
 

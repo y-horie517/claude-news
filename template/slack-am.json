@@ -1,0 +1,48 @@
+{
+  "text": "🌅 Claude Daily 朝刊 — YYYY-MM-DD（第NNN号）",
+  "attachments": [
+    {
+      "color": "#1c5480",
+      "blocks": [
+        {
+          "type": "header",
+          "text": { "type": "plain_text", "text": "🌅 Claude Daily 朝刊", "emoji": true }
+        },
+        {
+          "type": "context",
+          "elements": [
+            { "type": "mrkdwn", "text": "YYYY-MM-DD（曜）　第NNN号　読了 N分" }
+          ]
+        },
+        {
+          "type": "section",
+          "text": { "type": "mrkdwn", "text": "*きょうの3行*\n• 〈1行目〉\n• 〈2行目〉\n• 〈3行目〉" }
+        },
+        { "type": "divider" },
+        {
+          "type": "section",
+          "text": {
+            "type": "mrkdwn",
+            "text": "*① 今日の型*　〈型の名前〉\n*② すぐ効くTIPS*　〈見出し1〉／〈見出し2〉／〈見出し3〉\n*③ 最新事例*　〈見出し1〉／〈見出し2〉\n*④ 速報*　〈1行。なければ「本日は特筆すべき発表なし」〉\n*⑤ きょうのミニ課題*　〈タイトル〉（所要 N分）"
+          }
+        },
+        {
+          "type": "actions",
+          "elements": [
+            {
+              "type": "button",
+              "text": { "type": "plain_text", "text": "朝刊を読む", "emoji": true },
+              "style": "primary",
+              "url": "ARTIFACT_URL"
+            },
+            {
+              "type": "button",
+              "text": { "type": "plain_text", "text": "アーカイブ", "emoji": true },
+              "url": "https://github.com/y-horie517/claude-news/blob/main/digest/YYYY/MM/YYYY-MM-DD-am.md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
