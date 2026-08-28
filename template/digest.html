@@ -1,0 +1,295 @@
+<title>Claude Daily</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  /* ── トークン：明るいテーマ（既定） ───────────────────────── */
+  :root {
+    --paper:      #f2f4f4;
+    --surface:    #ffffff;
+    --surface-2:  #e9edee;
+    --ink:        #161b1e;
+    --ink-soft:   #3c464c;
+    --muted:      #5f6a71;
+    --rule:       #d5dcde;
+    --rule-soft:  #e4e9ea;
+    --accent-am:  #1c5480;
+    --accent-pm:  #8a3540;
+    --accent-ink: #ffffff;
+    --mark:       #f2e6c8;
+    --shadow:     0 1px 2px rgba(22,27,30,.05), 0 8px 24px -12px rgba(22,27,30,.18);
+
+    --f-display: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    --f-body:    "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    --f-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+    --measure: 40rem;
+    --rail: 5.5rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #10151a;
+      --surface:   #171e24;
+      --surface-2: #1e262d;
+      --ink:       #e5eaed;
+      --ink-soft:  #c2cbd1;
+      --muted:     #93a0a8;
+      --rule:      #2b353d;
+      --rule-soft: #212a31;
+      --accent-am: #7cb8e8;
+      --accent-pm: #e59aa2;
+      --accent-ink:#10151a;
+      --mark:      #3b3520;
+      --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:     #10151a;
+    --surface:   #171e24;
+    --surface-2: #1e262d;
+    --ink:       #e5eaed;
+    --ink-soft:  #c2cbd1;
+    --muted:     #93a0a8;
+    --rule:      #2b353d;
+    --rule-soft: #212a31;
+    --accent-am: #7cb8e8;
+    --accent-pm: #e59aa2;
+    --accent-ink:#10151a;
+    --mark:      #3b3520;
+    --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+
+  /* ── 版（朝刊 / 夕刊）でアクセントが切り替わる ───────────── */
+  .paper[data-edition="am"] { --accent: var(--accent-am); }
+  .paper[data-edition="pm"] { --accent: var(--accent-pm); }
+
+  /* ── 土台 ───────────────────────────────────────────────── */
+  body { background: var(--paper); color: var(--ink); font-family: var(--f-body);
+         font-size: 16px; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+  .paper { max-width: 58rem; margin: 0 auto; padding: 2.5rem 1.25rem 6rem;
+           display: flex; flex-direction: column; gap: 2.75rem; }
+  @media (min-width: 60rem) { .paper { padding-inline: 2rem; } }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { text-wrap: balance; font-family: var(--f-display); font-weight: 600; line-height: 1.4; }
+  p { margin: 0; }
+  strong { font-weight: 700; }
+  mark { background: var(--mark); color: var(--ink); padding: 0 .15em; border-radius: 2px; }
+
+  /* ── 題字 ───────────────────────────────────────────────── */
+  .masthead { display: flex; flex-direction: column; gap: .9rem;
+              border-bottom: 2px solid var(--ink); padding-bottom: 1rem; }
+  .masthead-top { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
+  .wordmark { font-family: var(--f-display); font-weight: 900; font-size: clamp(2rem, 6vw, 3rem);
+              letter-spacing: -.01em; margin: 0; line-height: 1.1; }
+  .edition { font-family: var(--f-display); font-weight: 600; font-size: 1rem;
+             background: var(--accent); color: var(--accent-ink);
+             padding: .2rem .7rem; border-radius: 2px; letter-spacing: .08em; }
+  .masthead-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem;
+                   font-size: .8rem; color: var(--muted); font-family: var(--f-mono);
+                   font-variant-numeric: tabular-nums; }
+
+  /* ── 3行サマリー ────────────────────────────────────────── */
+  .lede { display: flex; flex-direction: column; gap: .65rem;
+          border-left: 3px solid var(--accent); padding: .1rem 0 .1rem 1.1rem;
+          font-size: 1.0625rem; color: var(--ink-soft); }
+  .lede b { font-weight: 700; color: var(--ink); }
+
+  /* ── 節（左レールに番号とラベル）────────────────────────── */
+  .sec { display: grid; gap: .35rem 1.5rem; grid-template-columns: 1fr;
+         border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+  @media (min-width: 52rem) {
+    .sec { grid-template-columns: var(--rail) minmax(0, 1fr); }
+    .sec-rail { grid-row: span 2; }
+  }
+  .sec-rail { display: flex; flex-direction: column; gap: .15rem; padding-top: .35rem; }
+  .sec-no { font-family: var(--f-mono); font-size: 1.5rem; font-weight: 600;
+            color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  .sec-tag { font-size: .7rem; letter-spacing: .14em; color: var(--muted); font-weight: 500; }
+  .sec-title { font-size: clamp(1.35rem, 3.5vw, 1.7rem); margin: 0; }
+  .sec-body { display: flex; flex-direction: column; gap: 1.1rem; max-width: var(--measure); }
+  .sec-body > p { color: var(--ink-soft); }
+
+  /* ── 記事内の小見出し ───────────────────────────────────── */
+  .item { display: flex; flex-direction: column; gap: .5rem; }
+  .item-h { font-size: 1.0625rem; font-weight: 700; font-family: var(--f-body); margin: 0; }
+  .item-h .num { font-family: var(--f-mono); color: var(--accent); margin-right: .4em; font-size: .95em; }
+
+  /* ── 箱もの ─────────────────────────────────────────────── */
+  .card { background: var(--surface); border: 1px solid var(--rule);
+          border-radius: 6px; padding: 1.1rem 1.2rem; box-shadow: var(--shadow);
+          display: flex; flex-direction: column; gap: .7rem; }
+  .card-h { font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; margin: 0;
+            display: flex; align-items: center; gap: .55rem; }
+  .card-h::before { content: ""; width: .5rem; height: .5rem; background: var(--accent);
+                    border-radius: 50%; flex: none; }
+  .card.task { border-left: 3px solid var(--accent); }
+
+  /* ── 図 ─────────────────────────────────────────────────── */
+  figure { margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .diagram { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+             padding: 1rem; overflow-x: auto; }
+  .diagram .mermaid { background: transparent; margin: 0; display: flex; justify-content: center; }
+  figcaption { font-size: .8rem; color: var(--muted); }
+
+  /* ── コード ─────────────────────────────────────────────── */
+  pre:not(.mermaid) { background: var(--surface-2); border: 1px solid var(--rule-soft);
+                      border-radius: 6px; padding: .9rem 1rem; overflow-x: auto; margin: 0;
+                      font-family: var(--f-mono); font-size: .84rem; line-height: 1.7; }
+  code { font-family: var(--f-mono); font-size: .88em; }
+  :not(pre) > code { background: var(--surface-2); padding: .1em .38em; border-radius: 3px; }
+
+  /* ── 表 ─────────────────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  thead th { background: var(--surface-2); font-weight: 700; font-size: .8rem;
+             letter-spacing: .04em; color: var(--ink); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  /* ── リスト ─────────────────────────────────────────────── */
+  ul.plain, ol.plain { margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: .4rem;
+                       color: var(--ink-soft); }
+  ul.plain::marker, ol.plain li::marker { color: var(--accent); }
+
+  /* ── 出典 ───────────────────────────────────────────────── */
+  .src { font-size: .8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .35rem .75rem; }
+  .src::before { content: "出典"; font-family: var(--f-mono); font-size: .68rem; letter-spacing: .1em;
+                 border: 1px solid var(--rule); border-radius: 2px; padding: 0 .35rem; align-self: center; }
+  .unverified { font-size: .8rem; color: var(--muted); font-style: normal; }
+  .unverified::before { content: "未確認 "; font-weight: 700; color: var(--accent); }
+
+  /* ── 足 ─────────────────────────────────────────────────── */
+  .colophon { border-top: 2px solid var(--ink); padding-top: 1rem; font-size: .8rem;
+              color: var(--muted); display: flex; flex-direction: column; gap: .4rem; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .paper > * { animation: rise .5s cubic-bezier(.22,.61,.36,1) backwards; }
+    .paper > *:nth-child(2) { animation-delay: .05s }
+    .paper > *:nth-child(3) { animation-delay: .1s }
+    .paper > *:nth-child(n+4) { animation-delay: .15s }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  }
+</style>
+
+<!-- ══ 版を切り替えるときは data-edition を "am" / "pm" に ══ -->
+<div class="paper" data-edition="am">
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <h1 class="wordmark">Claude Daily</h1>
+      <span class="edition">朝刊</span>
+    </div>
+    <div class="masthead-meta">
+      <span>2026-08-29 (金)</span>
+      <span>第 001 号</span>
+      <span>読了 6分</span>
+    </div>
+  </header>
+
+  <div class="lede">
+    <p><b>〈今日いちばん大事なこと〉</b>を1文で。</p>
+    <p>〈2つめ〉</p>
+    <p>〈3つめ〉</p>
+  </div>
+
+  <!-- ══ ① 今日の型 ══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">01</span><span class="sec-tag">推奨される使い方</span></div>
+    <h2 class="sec-title">〈今日の型の名前〉</h2>
+    <div class="sec-body">
+      <p>〈この型は何を解決するのか。1〜2文〉</p>
+      <figure>
+        <div class="diagram"><pre class="mermaid">
+flowchart LR
+  A["状況"] --> B["やること"] --> C["得られる結果"]
+        </pre></div>
+        <figcaption>図1: 〈この図が示していること〉</figcaption>
+      </figure>
+      <div class="card">
+        <h3 class="card-h">そのまま使えるプロンプト</h3>
+        <pre><code>〈コピペできる完全な指示文〉</code></pre>
+      </div>
+      <p class="src"><a href="#">〈一次情報のURL〉</a></p>
+    </div>
+  </section>
+
+  <!-- ══ ② すぐ効くTIPS ══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">02</span><span class="sec-tag">開発TIPS</span></div>
+    <h2 class="sec-title">すぐ効くTIPS 3本</h2>
+    <div class="sec-body">
+      <div class="item">
+        <h3 class="item-h"><span class="num">1</span>〈TIPSの見出し〉</h3>
+        <p>〈なぜ効くのか〉</p>
+        <pre><code>〈実行例〉</code></pre>
+      </div>
+      <div class="item">
+        <h3 class="item-h"><span class="num">2</span>〈TIPSの見出し〉</h3>
+        <p>〈説明〉</p>
+      </div>
+      <div class="item">
+        <h3 class="item-h"><span class="num">3</span>〈TIPSの見出し〉</h3>
+        <p>〈説明〉</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ③ 最新事例 ══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">03</span><span class="sec-tag">最新事例</span></div>
+    <h2 class="sec-title">世の中はこう使っている</h2>
+    <div class="sec-body">
+      <div class="item">
+        <h3 class="item-h">〈事例の見出し〉</h3>
+        <p>〈誰が・何を・どうやって・結果どうだったか〉</p>
+        <p class="src"><a href="#">〈出典〉</a></p>
+      </div>
+      <div class="item">
+        <h3 class="item-h">〈事例の見出し〉</h3>
+        <p>〈本文〉</p>
+        <p class="src"><a href="#">〈出典〉</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ④ 速報 ══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">04</span><span class="sec-tag">速報</span></div>
+    <h2 class="sec-title">新機能・変更点</h2>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>いつ</th><th>何が</th><th>どう効くか</th></tr></thead>
+          <tbody>
+            <tr><td>v0.00.0</td><td>〈変更〉</td><td>〈読者への影響〉</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src"><a href="#">〈CHANGELOG / 公式ニュース〉</a></p>
+    </div>
+  </section>
+
+  <!-- ══ ⑤ ミニ課題（朝刊のみ）══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">05</span><span class="sec-tag">きょうの課題</span></div>
+    <h2 class="sec-title">〈課題のタイトル〉</h2>
+    <div class="sec-body">
+      <div class="card task">
+        <h3 class="card-h">所要 10分</h3>
+        <p>〈手を動かして試せる具体的な課題。前提・手順・確認方法まで書く〉</p>
+        <ol class="plain">
+          <li>〈手順1〉</li>
+          <li>〈手順2〉</li>
+        </ol>
+        <p>答え合わせは今夜の夕刊で。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <p>Claude Daily — Claude Code と Claude 活用の日刊ダイジェスト。毎朝8時・毎晩20時に更新。</p>
+    <p>アーカイブ: <a href="https://github.com/y-horie517/claude-news">github.com/y-horie517/claude-news</a></p>
+  </footer>
+
+</div>
