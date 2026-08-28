@@ -27,3 +27,11 @@
 - 2026-08-28 夕 [事例] OTEL_LOG_TOOL_DETAILS=1 と skill_activated で未使用Skillを実測 — 統廃合をログで判断する
 - 2026-08-28 夕 [事例] 設定監査によるオーバーヘッド削減の報告（61%減・44%減、いずれも未確認）
 - 2026-08-28 夕 [用語] コンパクション / 1Mコンテキスト対応モデル / CLAUDE.md 200行・4MiB / MEMORY.md 200行・25KB
+- 2026-08-29 朝 [型] 探索→計画→実装→コミット（Plan Mode） — Shift+Tab/--permission-mode planで探索・計画を実装から分離、Ctrl+Gで計画をエディタ編集
+- 2026-08-29 朝 [TIPS] 使うCLIツールを教えて使わせる — gh/aws/gcloud/sentry-cli、未知のCLIも--helpから学習させられる
+- 2026-08-29 朝 [TIPS] 許可リストとサンドボックスでプロンプトを減らす — /permissionsで安全なコマンドを許可登録、/sandboxでOSレベル隔離
+- 2026-08-29 朝 [TIPS] フックで「毎回必ず」を保証する — CLAUDE.mdは助言的、フック（.claude/settings.json）は決定的に実行
+- 2026-08-29 朝 [事例] Spellbook 契約レビューAI — Fable計画→Sonnet実行→Fableレビューの体制、契約完了10時間→約1時間、月53万件処理
+- 2026-08-29 朝 [事例] EvenUp 人身傷害の書類作成支援 — 従業員200名超にClaude Enterprise/Code展開、文書作成8〜15時間→約30分（99%減）
+- 2026-08-29 朝 [事例] Rocket Money 家計管理アプリ — AI金融エージェント「Rowan」開発、月間コミット数11倍（11件→128件）
+- 2026-08-29 朝 [課題] Plan Modeで探索→計画→実装を体験する — Next.jsの小機能追加でCtrl+Gの計画編集を試す
