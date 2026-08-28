@@ -36,6 +36,17 @@
 4. **ネタがない日は正直に書く。** 「本日は特筆すべき新機能の発表はありませんでした」と書いてよい。埋めるために薄い話題を捏造しない。
 5. **手元で試せることを優先する。** 抽象的な心構えより、今日のうちに実行できる具体を書く。
 
+## 原稿は2つの形で作る（混ぜない）
+
+同じ内容を**別々に2回書きます**。片方をコピーしてもう片方にしないこと。
+
+| 出力先 | 形式 | ルール |
+|---|---|---|
+| `digest/YYYY/MM/*.md`（GitHub アーカイブ） | **純粋な Markdown** | `<div>` `<p class="src">` `<h3>` などの **HTML タグを一切入れない**。見出しは `###`、囲みは引用 `>`、出典は `出典: [タイトル](URL)`、図は ```mermaid フェンス |
+| Artifact の HTML | **テンプレートのクラス構造** | `template/COMPONENTS.md` のクラスを使う。Markdown 記法（`##` や `**`）を書かない |
+
+GitHub 上で `<div class="item">` がそのまま文字として見えてしまうと台無しです。**Markdown を書き終えたら `grep -n "<div\|<p class\|</content" ファイル` で確認**し、1件でも出たら直してください。
+
 ## 一次情報の見分け
 
 - 一次情報: `docs.claude.com` / `anthropic.com/news` / `anthropic.com/engineering` / `github.com/anthropics/*`

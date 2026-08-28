@@ -63,6 +63,13 @@ ls digest/*/*/*.md | wc -l              # ← +1 が今日の号数
 - 図は **最低1枚**。```mermaid フェンスで書く
 - 読者は Next.js の Web 開発をしています。課題や例はそこで試せる形に寄せる
 
+> **重要**: この Markdown には HTML タグを入れないでください。`<div class="item">` などは Artifact 側だけで使います。
+> 書き終えたら必ず確認する:
+> ```bash
+> grep -n '<div\|<p class\|<h3\|</content' digest/YYYY/MM/YYYY-MM-DD-am.md   # 何も出なければOK
+> ```
+
+
 ## Step 3. Artifact を公開する
 
 1. `template/digest.html` をコピーして `build/am.html` を作る。

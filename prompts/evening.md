@@ -62,6 +62,13 @@ ls digest/*/*/*.md | wc -l              # ← +1 が今日の号数
 - 分量の目安: 12〜15分で読める量（日本語 4,000〜6,000字程度）
 - 図は **最低2枚**
 
+> **重要**: この Markdown には HTML タグを入れないでください。`<div class="item">` などは Artifact 側だけで使います。
+> 書き終えたら必ず確認する:
+> ```bash
+> grep -n '<div\|<p class\|<h3\|</content' digest/YYYY/MM/YYYY-MM-DD-pm.md   # 何も出なければOK
+> ```
+
+
 ## Step 3. Artifact を公開する
 
 1. `template/digest.html` をコピーして `build/pm.html` を作る。
