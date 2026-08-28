@@ -11,12 +11,16 @@
 | Claude Code ドキュメント | `https://code.claude.com/docs/en/overview` ／ 目次は `https://code.claude.com/docs/llms.txt` | 新しいページ・記述の変化 |
 | Claude Platform リリースノート | `https://platform.claude.com/docs/en/release-notes/overview` | モデル・API・Console の変更 |
 | 導入事例 | `https://claude.com/customers` | 企業の導入事例（チーム展開の題材） |
+| Anthropic ニュース | `https://www.anthropic.com/news` | 製品・モデルの発表 |
+| Anthropic Engineering | `https://www.anthropic.com/engineering` | 使い方の設計論。**深掘り連載の一次ソースとして質が高い** |
 
-## 取れない URL（試さないこと）
+## URL の書き方の注意
 
-- `https://www.anthropic.com/...` — **サンドボックスの egress でブロックされます**（`EGRESS_BLOCKED`）。公式ニュースは WebSearch の結果本文で拾うか、`claude.com` 側の同等ページを使う
-- `https://github.com/**/blob/**` — HTML の外枠しか返りません。必ず `raw.githubusercontent.com` に読み替える
-- `https://docs.claude.com/...` — `code.claude.com` / `platform.claude.com` に 301 されます。最初から新URLで取る
+ネットワークは **Full**（全ドメイン許可）です。egress でブロックされることはありません。ただし URL の形によっては中身が取れません。
+
+- `https://github.com/**/blob/**` — HTML の外枠しか返りません。必ず `raw.githubusercontent.com/<org>/<repo>/<branch>/<path>` に読み替える
+- `https://docs.claude.com/...` — `code.claude.com/docs/...`（Claude Code）/ `platform.claude.com/docs/...`（API・Console）に 301 されます。最初から新URLで取る
+- `https://www.anthropic.com/news` `https://www.anthropic.com/engineering` — 読めます（公式ニュース・技術記事の一次情報）
 
 ## 二次情報（事例集めに使う。仕様の根拠にはしない）
 
@@ -25,7 +29,7 @@
 - WebSearch: `site:reddit.com/r/ClaudeAI` の直近の話題
 - Hacker News の Claude 関連スレッド
 
-**WebSearch は egress 制限の外側で動くので必ず使えます。** 個別記事の WebFetch がブロックされたときは、検索結果の抜粋だけで書ける範囲にとどめ、`unverified` として明示すること。
+個別記事は WebFetch で**本文まで読んでから**書くこと。検索結果の抜粋だけで書いた場合は `unverified` として明示する。
 
 ## 前回チェック時点
 
