@@ -65,3 +65,12 @@
 - 2026-08-30 夕 [型] 検証(動くか)と計画との突き合わせ(頼んだものか)は別物 — 後者はサブエージェントに差分とPLAN.mdを渡す
 - 2026-08-30 夕 [事例] AI-Native SDLC playbook（Anthropic）— intent.md→spec.md→plan.md→差分→レビュー所見の成果物連鎖、plan.mdをコミットしREVIEW.mdでレビュー観点を明文化、Claudeは所見のみで承認不可
 - 2026-08-30 夕 [用語] permissions.defaultMode: "plan" / claudeCode.initialPermissionMode / /goal の3評決（未達・達成・不可能）・条件4,000文字
+- 2026-08-31 朝 [型] 初見のリポジトリを3層防御で開く — 環境層(sandbox)/モデル層(auto mode分類器)/外部コンテンツ層の3層。設定ファイルは開く前にレビューする
+- 2026-08-31 朝 [TIPS] Stop hookは8回連続ブロックで強制的に上書きされる — 検証ゲートを過信しない
+- 2026-08-31 朝 [TIPS] /rewindのSummarize from here / up to hereで会話の一部だけを圧縮する
+- 2026-08-31 朝 [TIPS] sandbox-runtime（anthropic-experimental）はOSSで監査できる — 84%のプロンプト削減を実現した設計
+- 2026-08-31 朝 [事例] Vega サイバーセキュリティ — Opus/Sonnet/Haikuを階層的に使い分け、調査速度44倍・データコスト82%減・分析チーム時間67%回復
+- 2026-08-31 朝 [事例] League ヘルスケア — 独自オーケストレーションツールSwarm、契約から全社展開まで実質1営業日、開発サイクル半減
+- 2026-08-31 朝 [事例] Microsoft社内ロールアウトの学術研究（arXiv:2607.01418）— マージPR約24%増だが配布のみでは効果なし、継続利用が鍵
+- 2026-08-31 朝 [速報] Inference hooksがClaude Enterpriseでベータ開始（2026-08-05）— chat/Cowork/Claude Code共通、プロンプトをallow/deny判定してから推論
+- 2026-08-31 朝 [課題] Stop hookで検証を強制する — lintが通るまで終了しないhookを書かせ、ブロックと自己修正のループを観察する

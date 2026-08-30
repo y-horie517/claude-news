@@ -37,4 +37,4 @@
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
 - last_changelog_version: v2.1.251
-- last_checked_at: 2026-08-30
+- last_checked_at: 2026-08-31
