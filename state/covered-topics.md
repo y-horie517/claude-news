@@ -74,3 +74,16 @@
 - 2026-08-31 朝 [事例] Microsoft社内ロールアウトの学術研究（arXiv:2607.01418）— マージPR約24%増だが配布のみでは効果なし、継続利用が鍵
 - 2026-08-31 朝 [速報] Inference hooksがClaude Enterpriseでベータ開始（2026-08-05）— chat/Cowork/Claude Code共通、プロンプトをallow/deny判定してから推論
 - 2026-08-31 朝 [課題] Stop hookで検証を強制する — lintが通るまで終了しないhookを書かせ、ブロックと自己修正のループを観察する
+- 2026-08-31 夕 [連載] 第4回 権限モードと安全性 — 6モードの比較・判定順序・auto mode分類器・保護パス/重要パス・隔離とのセット
+- 2026-08-31 夕 [TIPS] Stop hookは終了コード2だけがブロック — 1は非ブロックのエラーでターンは終わる。`npm run lint || exit 2` で変換する
+- 2026-08-31 夕 [TIPS] `stop_hook_active` はhook起因で継続中に true — 解決しない条件でブロックし続けないための入力
+- 2026-08-31 夕 [TIPS] `hookSpecificOutput.additionalContext` はエラーでなく助言として継続させる — ループ保護は block と同じ
+- 2026-08-31 夕 [TIPS] `"auto"` は .claude/settings.json / settings.local.json からは効かない — その場合ユーザー設定のdefaultModeも無視され組み込み既定になる
+- 2026-08-31 夕 [TIPS] ルールの評価順は deny → ask → allow、最初の一致が勝つ — 具体性は順序を変えず、denyに例外は持たせられない
+- 2026-08-31 夕 [TIPS] auto modeに入ると広いallowルールが一時的に落ちる — Bash(*)・Bash(python*)・パッケージマネージャのrun・Agent/Monitor。抜けると復元
+- 2026-08-31 夕 [TIPS] 会話で述べた境界はブロック信号になるがコンパクションで消える — 確実にしたいならdenyルール
+- 2026-08-31 夕 [TIPS] 保護パスは permissions.allow で開けられない — 検査がallow評価より前に走る（Edit(.claude/**) は無効）
+- 2026-08-31 夕 [型] 「最悪の挙動で何が壊れうるか」を決めてからモードを選ぶ — 隔離を先に用意する
+- 2026-08-31 夕 [事例] 権限ポリシーを配る（managed settings）— allowManagedPermissionRulesOnly で開発者のルールと --allowedTools を無視、/status と claude doctor で着弾確認、管理設定はフェイルクローズ
+- 2026-08-31 夕 [事例] 50名以上向けロールアウトの4段階（パイロット→部門→複数部門→全社）という報告（systemprompt.io、二次情報）
+- 2026-08-31 夕 [用語] 6つの権限モード / 保護パス(protected path) / 重要パス(critical path) / 分類器の停止条件(3連続・通算20回) / 分類器の実測値(偽陽性0.4%・見逃し17%/5.7%・プロンプト承認率93%) / disableAutoMode / disableBypassPermissionsMode / allowManagedPermissionRulesOnly
