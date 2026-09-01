@@ -12,8 +12,7 @@
     --muted:      #5f6a71;
     --rule:       #d5dcde;
     --rule-soft:  #e4e9ea;
-    --accent-am:  #1c5480;
-    --accent-pm:  #8a3540;
+    --accent-base:  #1c5480;
     --accent-ink: #ffffff;
     --mark:       #f2e6c8;
     --shadow:     0 1px 2px rgba(22,27,30,.05), 0 8px 24px -12px rgba(22,27,30,.18);
@@ -35,8 +34,7 @@
       --muted:     #93a0a8;
       --rule:      #2b353d;
       --rule-soft: #212a31;
-      --accent-am: #7cb8e8;
-      --accent-pm: #e59aa2;
+      --accent-base: #7cb8e8;
       --accent-ink:#10151a;
       --mark:      #3b3520;
       --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
@@ -51,16 +49,14 @@
     --muted:     #93a0a8;
     --rule:      #2b353d;
     --rule-soft: #212a31;
-    --accent-am: #7cb8e8;
-    --accent-pm: #e59aa2;
+    --accent-base: #7cb8e8;
     --accent-ink:#10151a;
     --mark:      #3b3520;
     --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
   }
 
-  /* ── 版（朝刊 / 夕刊）でアクセントが切り替わる ───────────── */
-  .paper[data-edition="am"] { --accent: var(--accent-am); }
-  .paper[data-edition="pm"] { --accent: var(--accent-pm); }
+  /* ── アクセント（1日1号なので固定）────────────────────── */
+  .paper { --accent: var(--accent-base); }
 
   /* ── 土台 ───────────────────────────────────────────────── */
   body { background: var(--paper); color: var(--ink); font-family: var(--f-body);
@@ -82,9 +78,6 @@
   .masthead-top { display: flex; align-items: baseline; gap: .9rem; flex-wrap: wrap; }
   .wordmark { font-family: var(--f-display); font-weight: 900; font-size: clamp(2rem, 6vw, 3rem);
               letter-spacing: -.01em; margin: 0; line-height: 1.1; }
-  .edition { font-family: var(--f-display); font-weight: 600; font-size: 1rem;
-             background: var(--accent); color: var(--accent-ink);
-             padding: .2rem .7rem; border-radius: 2px; letter-spacing: .08em; }
   .masthead-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem;
                    font-size: .8rem; color: var(--muted); font-family: var(--f-mono);
                    font-variant-numeric: tabular-nums; }
@@ -172,18 +165,16 @@
   }
 </style>
 
-<!-- ══ 版を切り替えるときは data-edition を "am" / "pm" に ══ -->
-<div class="paper" data-edition="am">
+<div class="paper">
 
   <header class="masthead">
     <div class="masthead-top">
       <h1 class="wordmark">Claude Daily</h1>
-      <span class="edition">朝刊</span>
     </div>
     <div class="masthead-meta">
-      <span>2026-08-29 (金)</span>
-      <span>第 001 号</span>
-      <span>読了 6分</span>
+      <span>2026-09-03 (木)</span>
+      <span>第 012 号</span>
+      <span>読了 13分</span>
     </div>
   </header>
 
@@ -193,30 +184,60 @@
     <p>〈3つめ〉</p>
   </div>
 
-  <!-- ══ ① 今日の型 ══ -->
+  <!-- ══ ① ベストプラクティス（看板。図とコードは省かない）══ -->
   <section class="sec">
-    <div class="sec-rail"><span class="sec-no">01</span><span class="sec-tag">推奨される使い方</span></div>
-    <h2 class="sec-title">〈今日の型の名前〉</h2>
+    <div class="sec-rail"><span class="sec-no">01</span><span class="sec-tag">ベストプラクティス</span></div>
+    <h2 class="sec-title">〈型の名前〉</h2>
     <div class="sec-body">
       <p>〈この型は何を解決するのか。1〜2文〉</p>
       <figure>
         <div class="diagram"><pre class="mermaid">
 flowchart LR
-  A["状況"] --> B["やること"] --> C["得られる結果"]
+A["状況"] --> B["やること"] --> C["得られる結果"]
         </pre></div>
         <figcaption>図1: 〈この図が示していること〉</figcaption>
       </figure>
       <div class="card">
-        <h3 class="card-h">そのまま使えるプロンプト</h3>
-        <pre><code>〈コピペできる完全な指示文〉</code></pre>
+        <h3 class="card-h">〈ファイルパス or コマンド〉</h3>
+        <pre><code>〈そのままコピペして動く完全なコード／設定〉</code></pre>
+      </div>
+      <div class="item">
+        <h3 class="item-h">やりがちな失敗</h3>
+        <p>〈アンチパターンと、<mark>なぜ失敗するのか</mark>。可能なら失敗する側のコードを短く対比させる〉</p>
       </div>
       <p class="src"><a href="#">〈一次情報のURL〉</a></p>
     </div>
   </section>
 
-  <!-- ══ ② すぐ効くTIPS ══ -->
+  <!-- ══ ② 深掘り連載 ══ -->
   <section class="sec">
-    <div class="sec-rail"><span class="sec-no">02</span><span class="sec-tag">開発TIPS</span></div>
+    <div class="sec-rail"><span class="sec-no">02</span><span class="sec-tag">深掘り連載</span></div>
+    <h2 class="sec-title">第N回 — 〈テーマ〉</h2>
+    <div class="sec-body">
+      <p>〈なぜ重要か〉</p>
+      <figure>
+        <div class="diagram"><pre class="mermaid">
+flowchart TD
+A["入力"] --> B["処理"] --> C["出力"]
+        </pre></div>
+        <figcaption>図2: 〈仕組み〉</figcaption>
+      </figure>
+      <div class="item">
+        <h3 class="item-h">具体的な使い方</h3>
+        <p>〈本文〉</p>
+      </div>
+      <div class="item">
+        <h3 class="item-h">使うべき時 / 使うべきでない時</h3>
+        <p>〈本文〉</p>
+      </div>
+      <p class="src"><a href="#">〈一次情報のURL〉</a></p>
+    </div>
+  </section>
+
+  <!-- ══ ③ すぐ効くTIPS ══ -->
+  <!-- 図は1号あたり最低3枚。①②に1枚ずつ入れたあと、3枚目は内容に合う節（③〜⑦のどこでも）に置く -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">03</span><span class="sec-tag">開発TIPS</span></div>
     <h2 class="sec-title">すぐ効くTIPS 3本</h2>
     <div class="sec-body">
       <div class="item">
@@ -235,9 +256,9 @@ flowchart LR
     </div>
   </section>
 
-  <!-- ══ ③ 最新事例 ══ -->
+  <!-- ══ ④ 事例 ══ -->
   <section class="sec">
-    <div class="sec-rail"><span class="sec-no">03</span><span class="sec-tag">最新事例</span></div>
+    <div class="sec-rail"><span class="sec-no">04</span><span class="sec-tag">事例</span></div>
     <h2 class="sec-title">世の中はこう使っている</h2>
     <div class="sec-body">
       <div class="item">
@@ -246,16 +267,16 @@ flowchart LR
         <p class="src"><a href="#">〈出典〉</a></p>
       </div>
       <div class="item">
-        <h3 class="item-h">〈事例の見出し〉</h3>
+        <h3 class="item-h">〈チーム／業務展開の事例〉</h3>
         <p>〈本文〉</p>
         <p class="src"><a href="#">〈出典〉</a></p>
       </div>
     </div>
   </section>
 
-  <!-- ══ ④ 速報 ══ -->
+  <!-- ══ ⑤ 速報 ══ -->
   <section class="sec">
-    <div class="sec-rail"><span class="sec-no">04</span><span class="sec-tag">速報</span></div>
+    <div class="sec-rail"><span class="sec-no">05</span><span class="sec-tag">速報</span></div>
     <h2 class="sec-title">新機能・変更点</h2>
     <div class="sec-body">
       <div class="table-wrap">
@@ -270,9 +291,25 @@ flowchart LR
     </div>
   </section>
 
-  <!-- ══ ⑤ ミニ課題（朝刊のみ）══ -->
+  <!-- ══ ⑥ コマンド早見（コマンドだけ。設定キー・用語・数値は入れない）══ -->
   <section class="sec">
-    <div class="sec-rail"><span class="sec-no">05</span><span class="sec-tag">きょうの課題</span></div>
+    <div class="sec-rail"><span class="sec-no">06</span><span class="sec-tag">コマンド早見</span></div>
+    <h2 class="sec-title">今日出てきたコマンド</h2>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>コマンド</th><th>何をするか</th></tr></thead>
+          <tbody>
+            <tr><td><code>/example</code></td><td>〈何をするか〉</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ⑦ きょうの課題（模範解答まで同じ号に載せる）══ -->
+  <section class="sec">
+    <div class="sec-rail"><span class="sec-no">07</span><span class="sec-tag">きょうの課題</span></div>
     <h2 class="sec-title">〈課題のタイトル〉</h2>
     <div class="sec-body">
       <div class="card task">
@@ -282,13 +319,19 @@ flowchart LR
           <li>〈手順1〉</li>
           <li>〈手順2〉</li>
         </ol>
-        <p>答え合わせは今夜の夕刊で。</p>
       </div>
+      <div class="card task">
+        <h3 class="card-h">模範解答</h3>
+        <p>〈解答〉</p>
+        <p>〈なぜそうなるのか〉</p>
+        <p>〈よくある詰まりどころ〉</p>
+      </div>
+      <p>あすは「〈連載の次テーマ〉」を扱います。</p>
     </div>
   </section>
 
   <footer class="colophon">
-    <p>Claude Daily — Claude Code と Claude 活用の日刊ダイジェスト。毎朝8時・毎晩20時に更新。</p>
+    <p>Claude Daily — Claude Code と Claude 活用の日刊ダイジェスト。毎朝8時に更新。</p>
     <p>アーカイブ: <a href="https://github.com/y-horie517/claude-news">github.com/y-horie517/claude-news</a></p>
   </footer>
 

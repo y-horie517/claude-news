@@ -7,7 +7,7 @@
 | 種別 | 取得に使う URL | 見るもの |
 |---|---|---|
 | Claude Code CHANGELOG | `https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md` | 前回チェック以降のバージョン差分。**速報の主軸**。記事中のリンクは `https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md` を使ってよい |
-| Claude Code ベストプラクティス | `https://code.claude.com/docs/en/best-practices` | 「型」と「TIPS」の一次ソース。質が高い |
+| Claude Code ベストプラクティス | `https://code.claude.com/docs/en/best-practices` | **「① ベストプラクティス」節の一次ソース。**「型」と「TIPS」もここから |
 | Claude Code ドキュメント | `https://code.claude.com/docs/en/overview` ／ 目次は `https://code.claude.com/docs/llms.txt` | 新しいページ・記述の変化 |
 | Claude Platform リリースノート | `https://platform.claude.com/docs/en/release-notes/overview` | モデル・API・Console の変更 |
 | 導入事例 | `https://claude.com/customers` | 企業の導入事例（チーム展開の題材） |
@@ -33,7 +33,7 @@
 
 ## 前回チェック時点
 
-朝刊エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
+エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
 - last_changelog_version: v2.1.258
