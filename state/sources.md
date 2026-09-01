@@ -36,5 +36,5 @@
 朝刊エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
-- last_changelog_version: v2.1.252
-- last_checked_at: 2026-09-01
+- last_changelog_version: v2.1.258
+- last_checked_at: 2026-09-02
