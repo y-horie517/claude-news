@@ -87,3 +87,13 @@
 - 2026-08-31 夕 [事例] 権限ポリシーを配る（managed settings）— allowManagedPermissionRulesOnly で開発者のルールと --allowedTools を無視、/status と claude doctor で着弾確認、管理設定はフェイルクローズ
 - 2026-08-31 夕 [事例] 50名以上向けロールアウトの4段階（パイロット→部門→複数部門→全社）という報告（systemprompt.io、二次情報）
 - 2026-08-31 夕 [用語] 6つの権限モード / 保護パス(protected path) / 重要パス(critical path) / 分類器の停止条件(3連続・通算20回) / 分類器の実測値(偽陽性0.4%・見逃し17%/5.7%・プロンプト承認率93%) / disableAutoMode / disableBypassPermissionsMode / allowManagedPermissionRulesOnly
+
+## 2026-09
+
+- 2026-09-01 朝 [型] `/batch`でファンアウト移行を任せる — gitリポジトリ内で5〜30体のサブエージェントに自動分割、各自worktreeで作業しPRを作成
+- 2026-09-01 朝 [TIPS] `/statusline`でコンテキスト残量を常時可視化する — 自然言語指示でスクリプトを`~/.claude/`に生成、設定も自動
+- 2026-09-01 朝 [TIPS] `claude agents`（Agent view）で複数バックグラウンドセッションを1画面から見る — 状態別一覧とPeek機能、research preview
+- 2026-09-01 朝 [TIPS] サブエージェント定義の`tools`と`model`をfrontmatterで絞る — `.claude/agents/*.md`で用途に応じたツール・モデル制限
+- 2026-09-01 朝 [事例] Atlassian「Rovo」— ClaudeとGoogle Cloudで全社エージェント基盤、月間実行500万件超
+- 2026-09-01 朝 [事例] 非エンジニアが5か月で社内ツール6本を本番稼働（Qiita、二次情報）— CONTEXT.md/SPEC.md/ADRで先に言語化、判断ロジックを純関数に分離
+- 2026-09-01 朝 [速報] v2.1.252 Mac版task output swapエラー修正・settings.local.json不在時のalways allow修正・Remote Controlスタール修正・大容量バックグラウンド通知のAPIサイズ制限対応
