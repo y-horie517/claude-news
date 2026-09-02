@@ -133,3 +133,13 @@
 - 2026-09-02 [速報] Claude Code CLI は v2.1.258 から更新なし／Platform 9/1 のリリースノート（Mythos 5.1、キャッシュ読み取り $0.25/MTok、`tool_choice` の any・tool 非対応）
 - 2026-09-02 [課題] 差分を固定してレビューさせるスキルを作る — `.claude/skills/review-diff/SKILL.md` に `!`git diff HEAD`` と3観点を書き、`/code-review low` と比較する
 - 2026-09-02 [用語] バンドルスキル `/run` `/verify` `/run-skill-generator` / REVIEW.md / 重要度3段階（Important・Nit・Pre-existing）/ ultra の上限（500ファイル・8,000行）
+- 2026-09-03 [BP] 捨てる前に書き出す（引き継ぎファイルと SessionStart フック）— `/handoff` スキルで `.claude/handoff/CURRENT.md` に書き出し、`SessionStart` の `startup`/`clear`/`compact` マッチャで自動的に読み直させる
+- 2026-09-03 [連載] 第7回 うまくいかないときの立て直し方 — Esc / rewind / Summarize / branch / clear / compact の6手段は戻す対象が違う。チェックポイントの守備範囲、`/clear` は同一プロセス内なら rewind から戻せる
+- 2026-09-03 [TIPS] `/clear` に名前を渡すと「離れる側」の会話に名前が付く — 引数なしだと新しい会話が名前を引き継ぐ（自動生成タイトルは引き継がない）
+- 2026-09-03 [TIPS] `/branch` は許可グラントとバックグラウンド実行を引き継ぐ、`--fork-session` は別プロセスなので引き継がない
+- 2026-09-03 [TIPS] `claude -p --resume <session-id> --output-format json` で終わったセッションに後から質問する — いまのコンテキストを汚さない
+- 2026-09-03 [事例] Pictet（スイスのプライベートバンク）— 700人が Claude Code/Cowork を利用、25回のワークショップで500人以上を訓練、エンジニアから段階展開。コンプライアンス突合 3人で2週間→数時間
+- 2026-09-03 [事例] `/handover` カスタムコマンドで引き継ぎを仕組み化（DevelopersIO、二次情報）— `~/.claude/commands/handover.md` と `.claude/handovers/`、「却下した案と理由」の節が効く
+- 2026-09-03 [速報] v2.1.259 `managedMcpServers`・`--permission-prompts none`・同時セッションの相互巻き戻し修正・Bash `Read()` 拒否ルール強化・`allowedMcpServers` のスコープ変更・`claude plugin validate --json`・GitLab の `MR !N` 表示
+- 2026-09-03 [課題] 引き継ぎがリセットをまたぐことを確かめる — `/handoff` → `/clear` → 新しい会話が状況を把握しているかを検証する
+- 2026-09-03 [用語] SessionStart のマッチャ5種（startup/resume/clear/compact/fork）/ `disable-model-invocation` / チェックポイント100件・30日・`cleanupPeriodDays` / 圧縮後に再読込されるのは直近5ファイル

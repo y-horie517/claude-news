@@ -36,5 +36,5 @@
 エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
-- last_changelog_version: v2.1.258
-- last_checked_at: 2026-09-02（第012号。CHANGELOG に v2.1.258 より新しい版なし）
+- last_changelog_version: v2.1.259
+- last_checked_at: 2026-09-03（第013号。v2.1.259 を速報で扱った。Platform リリースノートは 9/1 以降の新規なし）
