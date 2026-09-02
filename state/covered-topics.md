@@ -123,3 +123,13 @@
 - 2026-09-02 朝 [事例] Notion — Claude Managed Agentsで「External Agents」機能、公開3週間で1.8万エージェント作成・14万ステップ実行・9割が自動化トリガー
 - 2026-09-02 朝 [速報] v2.1.257 Claude Fable 5.1追加（Fableの新デフォルト、1Mコンテキスト）・auto modeにContainment Escapeルール追加・`CLAUDE_CODE_SUBAGENT_MODEL_FORCE`追加・作業ディレクトリ外初回読み取り前の確認プロンプト追加
 - 2026-09-02 朝 [速報] v2.1.258 macOS 12起動失敗の修正・リモート/予約セッションの権限承認エラー修正
+- 2026-09-02 [BP] 起動レシピをリポジトリに記録して「動くところまで」検証させる — `/run-skill-generator` で `.claude/skills/run-<name>/` にレシピを記録し、`/run` `/verify` と他エージェントが同じ手順で起動する
+- 2026-09-02 [連載] 第6回 差分の見せ方・レビューのさせ方 — `/code-review` の対象指定・effort の記憶・`--fix`/`--comment`/`--post`・背景実行・REVIEW.md と CLAUDE.md の非対称・ultra との使い分け
+- 2026-09-02 [TIPS] `skillOverrides` で `code-review` を `user-invocable-only` にする — Claude の自発起動と定期タスクからの起動を止め、自分で打つぶんは残す
+- 2026-09-02 [TIPS] スキル本文の `` !`コマンド` `` で差分を注入する — 探させずに確定した差分を渡す。置換は1回だけ、`!` は行頭か空白直後のみ
+- 2026-09-02 [TIPS] 走っているレビューは `/tasks` で見る・止める — ultra を途中で止めると部分的な指摘は返らず無料枠だけ消費される
+- 2026-09-02 [事例] Anthropic 社内の Code Review 実測 — 実質コメントの付く PR が 16%→54%、1,000行超は84%で平均7.5件、偽陽性1%未満、平均20分・$15〜25/PR
+- 2026-09-02 [事例] GitHub Actions で3ペルソナ並列レビュー＋信頼スコア0.8で自動マージ（Qiita、二次情報）— 17%（DBスキーマ・認証・決済・インフラ）は人間必須、2週間のシャドーモードから段階導入
+- 2026-09-02 [速報] Claude Code CLI は v2.1.258 から更新なし／Platform 9/1 のリリースノート（Mythos 5.1、キャッシュ読み取り $0.25/MTok、`tool_choice` の any・tool 非対応）
+- 2026-09-02 [課題] 差分を固定してレビューさせるスキルを作る — `.claude/skills/review-diff/SKILL.md` に `!`git diff HEAD`` と3観点を書き、`/code-review low` と比較する
+- 2026-09-02 [用語] バンドルスキル `/run` `/verify` `/run-skill-generator` / REVIEW.md / 重要度3段階（Important・Nit・Pre-existing）/ ultra の上限（500ファイル・8,000行）

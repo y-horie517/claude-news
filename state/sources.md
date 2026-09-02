@@ -37,4 +37,4 @@
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
 - last_changelog_version: v2.1.258
-- last_checked_at: 2026-09-02
+- last_checked_at: 2026-09-02（第012号。CHANGELOG に v2.1.258 より新しい版なし）
