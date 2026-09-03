@@ -37,4 +37,4 @@
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
 - last_changelog_version: v2.1.259
-- last_checked_at: 2026-09-03（第013号。v2.1.259 を速報で扱った。Platform リリースノートは 9/1 以降の新規なし）
+- last_checked_at: 2026-09-04（第014号。CHANGELOG は v2.1.259 のまま新バージョンなし。Platform リリースノートは 9/1 から、anthropic.com/news は 9/1 から新規なし）

@@ -143,3 +143,13 @@
 - 2026-09-03 [速報] v2.1.259 `managedMcpServers`・`--permission-prompts none`・同時セッションの相互巻き戻し修正・Bash `Read()` 拒否ルール強化・`allowedMcpServers` のスコープ変更・`claude plugin validate --json`・GitLab の `MR !N` 表示
 - 2026-09-03 [課題] 引き継ぎがリセットをまたぐことを確かめる — `/handoff` → `/clear` → 新しい会話が状況を把握しているかを検証する
 - 2026-09-03 [用語] SessionStart のマッチャ5種（startup/resume/clear/compact/fork）/ `disable-model-invocation` / チェックポイント100件・30日・`cleanupPeriodDays` / 圧縮後に再読込されるのは直近5ファイル
+- 2026-09-04 [BP] 言語サーバーを繋いで編集直後に型エラーを Claude へ返す — `typescript-lsp@claude-plugins-official` と `typescript-language-server` バイナリ、`.claude/settings.json` の `enabledPlugins`、自動診断とコードナビゲーション
+- 2026-09-04 [連載] 第8回 サブエージェント — 起動時に載るもの/載らないもの、`.claude/agents/` のフロントマター全体、`@agent-` 指名、フォーク（`/subtask`）、入れ子3層・同時20体、使う/使わないの判断フロー
+- 2026-09-04 [TIPS] 使っていないプラグインを棚卸しする — Installed タブの「Not used recently」と Last used、`/plugin list --enabled`、`claude plugin details`
+- 2026-09-04 [TIPS] `/reload-plugins` はプロンプトキャッシュを壊すと警告して止まる — `--force` で再実行。会話全体の再読込コストが発生する
+- 2026-09-04 [TIPS] 子のツールは `tools`（許可リスト）より `disallowedTools`（引き算）で書く — MCP は `mcp__github` や `mcp__*` でも外せる。両方書くと disallowedTools が先
+- 2026-09-04 [事例] DXC（保険基幹システム）— 保険部門1.4万人、オーケストレーション基盤「Assure」に Claude を4層で組み込み。請求受付のバックログ数日→数分、規制ルール組み込み12〜18か月→数日、労災計算アプリ8時間で構築・初回80%精度、人間の判断70%→20%
+- 2026-09-04 [事例] サブエージェント定義は孫にも再利用される（Zenn / GENDA、二次情報）— `heavy-implementer` が指示なしに `code-explore` と `test-runner` を孫として呼んだ。記事の「5階層」は当時の記述で、現行の既定は3層
+- 2026-09-04 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.259 のまま、Platform リリースノートも 9/1 から更新なし
+- 2026-09-04 [課題] Claude が自分の型エラーに同じターンで気づくか確かめる — Next.js で typescript-lsp を入れ、わざと型不一致を作らせて `tsc` なしで検出できるか見る
+- 2026-09-04 [用語] code intelligence プラグイン / LSP ツール / 自動診断（Ctrl+O で閲覧）/ `enabledPlugins` のキー形式 / 対応表のバイナリ11言語 / クラウドセッションでは言語サーバーを起動しない
