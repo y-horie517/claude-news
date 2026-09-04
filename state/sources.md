@@ -36,5 +36,5 @@
 エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
-- last_changelog_version: v2.1.259
-- last_checked_at: 2026-09-04（第014号。CHANGELOG は v2.1.259 のまま新バージョンなし。Platform リリースノートは 9/1 から、anthropic.com/news は 9/1 から新規なし）
+- last_changelog_version: v2.1.261
+- last_checked_at: 2026-09-05（第015号。CHANGELOG は v2.1.260 と v2.1.261 を新規に拾った。Platform リリースノートは 9/3 の ant CLI v1.30.0 が最新、モデル/API は 9/1 から更新なし。anthropic.com/news は 9/1 から新規なし）

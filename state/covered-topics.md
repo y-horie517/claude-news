@@ -153,3 +153,15 @@
 - 2026-09-04 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.259 のまま、Platform リリースノートも 9/1 から更新なし
 - 2026-09-04 [課題] Claude が自分の型エラーに同じターンで気づくか確かめる — Next.js で typescript-lsp を入れ、わざと型不一致を作らせて `tsc` なしで検出できるか見る
 - 2026-09-04 [用語] code intelligence プラグイン / LSP ツール / 自動診断（Ctrl+O で閲覧）/ `enabledPlugins` のキー形式 / 対応表のバイナリ11言語 / クラウドセッションでは言語サーバーを起動しない
+- 2026-09-05 [BP] セッションの前提を先に固定する（プロンプトキャッシュを壊さない） — 3層のプレフィックス構造、`promptCacheTtl`/`subagentPromptCacheTtl`（5m/1h、v2.1.242+）、`claude -p --output-format json` の `usage.cache_creation` で TTL 確認、`/usage` の `Prompt cache (main)` 行
+- 2026-09-05 [連載] 第9回 Explore / Plan エージェントの使い分け — 両者とも読み取り専用でCLAUDE.mdとgit statusをスキップ、Exploreはメイン継承（Claude APIではOpus上限、v2.1.198で変更）、徹底度3段階、`.claude/agents/Explore.md` で上書き、`CLAUDE_CODE_DISABLE_EXPLORE_PLAN_AGENTS=1`、`Agent(Explore)` deny
+- 2026-09-05 [TIPS] `/usage` の `Prompt cache (main)` 行でヒット率・ミス回数・warm かを見る（v2.1.251+）
+- 2026-09-05 [TIPS] `/skill-doctor` が未使用の読み込み済みスキルとコンテキスト費用を出す（v2.1.261）
+- 2026-09-05 [TIPS] `bashOutputMaxChars` / `taskOutputMaxChars` で出力の切り捨てを緩める（最大128K文字、v2.1.261）— 常時上げない
+- 2026-09-05 [事例] Carvana — Claude Tag と bundles で3チームに展開、アラート量56%減・卸売チームの回答65%高速化。内製ボットが広がらなかった理由は性能ではなく運用の持続性への不信
+- 2026-09-05 [事例] セッションを細かく切る運用（note、二次情報）— 冒頭で `/model` と `/effort` を固定、タスクごとにセッションを切る、失敗は `/rewind`、`/context` を1回
+- 2026-09-05 [速報] v2.1.261 `bashOutputMaxChars`/`taskOutputMaxChars`・`--append-subagent-system-prompt-file`・`/skill-doctor` の未使用スキル表示・組織ポリシー読み込み失敗の表示
+- 2026-09-05 [速報] v2.1.260 `/diff` 左右分割差分パネル・`/cost` のキャッシュミス原因表示・ヘッドレスの `/reload-plugins`・テキスト版 `/advisor`・括弧入り権限ルールの修正・Bash サンドボックスのセキュリティ修正
+- 2026-09-05 [速報] ant CLI v1.30.0（9/3）— `ant apply` でエージェント・環境・スキル等をリポジトリのファイルからコード管理、`claude-lock.json`
+- 2026-09-05 [課題] Explore を `model: haiku` に固定し、`/model` 切り替え前後で `/usage` のキャッシュミス回数を比較する
+- 2026-09-05 [用語] プレフィックスの完全一致 / キャッシュの3層（システムプロンプト・プロジェクトコンテキスト・会話）/ TTL 5分・1時間 / `ephemeral_1h_input_tokens`・`ephemeral_5m_input_tokens` / `opusplan` のモード切替＝モデル切替 / `/recap` はキャッシュを壊さない / Explore の徹底度 quick・medium・very thorough
