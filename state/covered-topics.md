@@ -165,3 +165,13 @@
 - 2026-09-05 [速報] ant CLI v1.30.0（9/3）— `ant apply` でエージェント・環境・スキル等をリポジトリのファイルからコード管理、`claude-lock.json`
 - 2026-09-05 [課題] Explore を `model: haiku` に固定し、`/model` 切り替え前後で `/usage` のキャッシュミス回数を比較する
 - 2026-09-05 [用語] プレフィックスの完全一致 / キャッシュの3層（システムプロンプト・プロジェクトコンテキスト・会話）/ TTL 5分・1時間 / `ephemeral_1h_input_tokens`・`ephemeral_5m_input_tokens` / `opusplan` のモード切替＝モデル切替 / `/recap` はキャッシュを壊さない / Explore の徹底度 quick・medium・very thorough
+- 2026-09-07 [BP] セッションに名前を付けてから並列で走らせる — `claude -n <name>` / `/rename` と `@` 指名、`crossSessionInbound`（accept・hold・refuse）と `isolatePeerMachines` を `.claude/settings.json` に置く、`notify_when_idle` で待たずに知らせてもらう、渡るのはテキストのみ
+- 2026-09-07 [連載] 第10回 Skills — 常駐するのは description だけで本文は呼ばれたときに載る、3つの置き場所とコマンド名＝ディレクトリ名、`arguments`/`argument-hint`/`allowed-tools`/`paths` を入れた完全な SKILL.md、description は 1,536 文字で切り詰め、`skillListingBudgetFraction`・`skillListingMaxDescChars`、SKILL.md は 500 行以内で `reference.md` に逃がす
+- 2026-09-07 [TIPS] `/list-agents`（別名 `/peers`）の1行目が自分の宛名 — `/status` の `Peer address` 行で受信箱の有無も分かる
+- 2026-09-07 [TIPS] `disableSkillShellExecution: true` で持ち込みスキルのシェル実行を止める — 本文を読む前に実行されるため監査前に置かない
+- 2026-09-07 [TIPS] コンパクション後にスキルが持ち越されるのは各5,000トークン・合計25,000トークンまで — 新しく呼んだものから枠を埋め、古いものは丸ごと落ちる
+- 2026-09-07 [事例] スキルをセッションのログから育てる（Zenn / Pana、二次情報）— `SessionEnd` フックでキュー化→headless で蒸留→`/skill-fix` で改善案、チーム展開は蒸留をローカル完結・改善は PR・承認は人間
+- 2026-09-07 [事例] PwC — 数十万人規模へ Claude を展開、米国3万人に研修と認定、リーダー5,000人以上に実地研修。保険引受10週間→10日、インシデント対応 数時間→数分、最大70%の提供速度改善
+- 2026-09-07 [速報] v2.1.263（バグ修正と信頼性改善のみ、個別項目なし）— v2.1.262 は CHANGELOG に項目なし。Platform / anthropic.com/news は 9/1 以降 新規なし
+- 2026-09-07 [課題] 2つのセッションを名前で呼び合わせる — `claude -n ui` / `claude -n api`、`@` 指名で送信、`Ctrl+O` で全文、idle 通知を試す
+- 2026-09-07 [用語] `ListAgents` / `SendMessage` / `notify_when_idle`（一度きり・12時間で失効）/ 受信箱ソケット（`CLAUDE_CODE_MESSAGING_SOCKET`・`CLAUDE_CODE_MESSAGING_TOKEN`）/ `dialogExpiry`（既定5分・`"never"`）/ 進歩的開示（progressive disclosure）/ スキルの解決順位
