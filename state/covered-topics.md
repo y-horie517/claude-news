@@ -175,3 +175,13 @@
 - 2026-09-07 [速報] v2.1.263（バグ修正と信頼性改善のみ、個別項目なし）— v2.1.262 は CHANGELOG に項目なし。Platform / anthropic.com/news は 9/1 以降 新規なし
 - 2026-09-07 [課題] 2つのセッションを名前で呼び合わせる — `claude -n ui` / `claude -n api`、`@` 指名で送信、`Ctrl+O` で全文、idle 通知を試す
 - 2026-09-07 [用語] `ListAgents` / `SendMessage` / `notify_when_idle`（一度きり・12時間で失効）/ 受信箱ソケット（`CLAUDE_CODE_MESSAGING_SOCKET`・`CLAUDE_CODE_MESSAGING_TOKEN`）/ `dialogExpiry`（既定5分・`"never"`）/ 進歩的開示（progressive disclosure）/ スキルの解決順位
+- 2026-09-08 [BP] 判定は JSON で返させる（`claude -p` を検査コマンドにする）— `--json-schema` で `structured_output` を固定し `jq -e` で終了コードに変える、`scripts/claude-gate.sh` と `npm run lint:claude`、`--permission-mode dontAsk`・`--max-turns`・`--max-budget-usd`、CI では `--bare`（`ANTHROPIC_API_KEY` が必要）
+- 2026-09-08 [連載] 第11回 Hooks — 1ターン中の発火順（UserPromptSubmit→PreToolUse→PostToolUse→PostToolBatch→Stop）、ハンドラー5種（command/http/mcp_tool/prompt/agent）と既定タイムアウト、出力の3経路（exit 0 / exit 2 / stdout JSON）、置き場所7か所、`PreToolUse` は権限判定より前で締める方向にしか効かない
+- 2026-09-08 [TIPS] `-p` 実行のバックグラウンド待ちは連続10分で打ち切られる — `CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS`（`0` で無制限）
+- 2026-09-08 [TIPS] `session_id` を控えれば別ディレクトリからでも `--resume` できる（v2.1.223 以降）
+- 2026-09-08 [TIPS] `system/init` の `plugin_errors` / `mcp_server_errors` で「読み込めていない」を CI で落とす（`mcp_server_errors` は v2.1.219 以降）
+- 2026-09-08 [事例] Anthropic の約40万セッション分析（2026-06-16 公開）— 熟練者は1プロンプトあたり約12動作・3,200語、成功率28〜33%対初心者15%、放棄率19%対5〜7%、「何を作るか」の70%は人間・「どう作るか」の80%は Claude、職種差は7ポイント以内
+- 2026-09-08 [事例] 無人実行でつまずく6パターン（hidekazu-konishi.com、二次情報、9/7 更新）— 対話プロンプト・広すぎる権限・シークレット漏れ・終了コードの誤読・上限なし・脆いパース。成立条件は「べき等・有界・検証可能」
+- 2026-09-08 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.263 のまま、Platform は 9/3 の ant CLI v1.30.0、news は 9/1 から更新なし
+- 2026-09-08 [課題] ゲートを1本作り、わざと落としてから通す — `console.log` を入れて `npm run lint:claude` の終了コードが 1 になることを確認する
+- 2026-09-08 [用語] `structured_output` / `--bare`（`CLAUDE_CODE_SIMPLE`）/ `jq -e` の終了コード / prompt hook の `{"ok": false, "reason": ...}` と `continueOnBlock` / `updatedInput` は最後に終わったフックが勝つ / `SessionEnd` は全フック合計1.5秒

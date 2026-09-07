@@ -37,4 +37,5 @@
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
 - last_changelog_version: v2.1.263
-- last_checked_at: 2026-09-07（第016号。CHANGELOG は v2.1.263 のみ新規で、中身は「Bug fixes and reliability improvements」の1行のみ。v2.1.262 は CHANGELOG に項目がない。Platform リリースノートは 9/3 の ant CLI v1.30.0 から更新なし。anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 から新規なし。anthropic.com/engineering も 4/23 が最新で新規なし）
+- last_checked_at: 2026-09-08（第017号。CHANGELOG は v2.1.263 のままで新規バージョンなし。Platform リリースノートは 9/3 の ant CLI v1.30.0 が最新、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 が最新、anthropic.com/engineering も 4/23 から更新なし。いずれも既報のため速報は「該当なし」で執筆）
+- 前回: 2026-09-07（第016号。CHANGELOG は v2.1.263 のみ新規で、中身は「Bug fixes and reliability improvements」の1行のみ。v2.1.262 は CHANGELOG に項目がない。Platform リリースノートは 9/3 の ant CLI v1.30.0 から更新なし。anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 から新規なし。anthropic.com/engineering も 4/23 が最新で新規なし）
