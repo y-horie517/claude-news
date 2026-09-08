@@ -185,3 +185,13 @@
 - 2026-09-08 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.263 のまま、Platform は 9/3 の ant CLI v1.30.0、news は 9/1 から更新なし
 - 2026-09-08 [課題] ゲートを1本作り、わざと落としてから通す — `console.log` を入れて `npm run lint:claude` の終了コードが 1 になることを確認する
 - 2026-09-08 [用語] `structured_output` / `--bare`（`CLAUDE_CODE_SIMPLE`）/ `jq -e` の終了コード / prompt hook の `{"ok": false, "reason": ...}` と `continueOnBlock` / `updatedInput` は最後に終わったフックが勝つ / `SessionEnd` は全フック合計1.5秒
+- 2026-09-09 [BP] 編集する場所を分けてから並列で走らせる（worktree）— `claude --worktree <名前>` と `claude --worktree "#1234"`、`.worktreeinclude`・`.gitignore` の `.claude/worktrees/`・`worktree.baseRef`（fresh/head の2値のみ）・`isolation: worktree`、隔離の4検査（Edit系のパス・作業ディレクトリ・git の向け直し・コマンド形状）
+- 2026-09-09 [連載] 第12回 スラッシュコマンド自作 — カスタムコマンドは Skills に統合された。`.claude/commands/` は `name` と `paths` が使えず補助ファイルも置けない。コマンド名の由来4パターン、解決順（管理設定→個人→プロジェクト、同じ場所なら skill が勝つ）、置換文字列一覧、`context: fork` ＋ `agent` ＋ `background`、`user-invocable: false` との向きの違い
+- 2026-09-09 [TIPS] `${CLAUDE_SKILL_DIR}` は本文と `allowed-tools` の両方で展開される — 同梱スクリプトを承認プロンプトなしで走らせる書き方
+- 2026-09-09 [TIPS] スキル本文の `$1.00` は引数に化ける — `\$1.00` でエスケープ。`\\$1` はエスケープにならず、`${CLAUDE_*}` には効かない
+- 2026-09-09 [TIPS] `/skill-doctor` で未使用スキルを棚卸しし、消すか `disable-model-invocation: true` にする
+- 2026-09-09 [事例] Pendo — Claude Code を仮想デスクトップ経由で全社配布し社内スキル（財務・独自ツール）を同梱、財務とピープルアナリティクスが日常利用。Novus は Managed Agents へ移行に約3日、評価セット成功率90%、扱うツール150以上
+- 2026-09-09 [事例] 並列セッションのブランチ切り替えをフックで禁止（SIOS Tech Lab、二次情報、2026-07-03）— worktree ＋ `PreToolUse` の `scripts/worktree-guard-hook.sh` で `git checkout`/`switch` を実行前に拒否、Claude が自分で `git worktree add` を使うようになった
+- 2026-09-09 [速報] v2.1.265 `--plugin-dir` でプラグインフォルダを動的読み込み・プロンプトキャッシュ再利用の破壊を3件修正・`--worktree` 起動の並列チェックアウト高速化・`/model opus[1m]` の拒否修正・ツール結果のディスク保存1GB上限・プラグインパスのバックスラッシュでシンボリックリンク検査を回避できた不具合修正・非対話セッションの作業ディレクトリリセット修正・スラッシュコマンド候補の一覧表示（v2.1.264 は CHANGELOG に項目なし）
+- 2026-09-09 [課題] worktree を1本立ててメインチェックアウトが守られることを確認する — `.worktreeinclude` の効果、`Edit` のブロック、信頼ダイアログ・Git LFS・シンボリックリンクの詰まりどころ
+- 2026-09-09 [用語] `.worktreeinclude` / `worktree.baseRef`（fresh・head）/ `EnterWorktree`・`ExitWorktree` / `WorktreeCreate`・`WorktreeRemove` フック / `isolation: worktree` / `$ARGUMENTS[N]`・`$N`・`$name` / `${CLAUDE_SESSION_ID}`・`${CLAUDE_EFFORT}`・`${CLAUDE_SKILL_DIR}`・`${CLAUDE_PROJECT_DIR}` / `user-invocable`

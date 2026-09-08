@@ -36,6 +36,7 @@
 エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
-- last_changelog_version: v2.1.263
-- last_checked_at: 2026-09-08（第017号。CHANGELOG は v2.1.263 のままで新規バージョンなし。Platform リリースノートは 9/3 の ant CLI v1.30.0 が最新、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 が最新、anthropic.com/engineering も 4/23 から更新なし。いずれも既報のため速報は「該当なし」で執筆）
+- last_changelog_version: v2.1.265
+- last_checked_at: 2026-09-09（第018号。CHANGELOG に v2.1.265 が追加された。項目は多数で、`--plugin-dir` のフォルダ指定と動的読み込み、プロンプトキャッシュ再利用の破壊修正3件、`--worktree` 起動の並列チェックアウト高速化、`/model opus[1m]` の拒否修正、ツール結果のディスク保存1GB上限、プラグインパスのバックスラッシュによるシンボリックリンク検査回避の修正などを速報で扱った。v2.1.264 は CHANGELOG に項目なし。Platform リリースノートは 9/3 の ant CLI v1.30.0 のまま、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 のまま、anthropic.com/engineering も 4/23 から更新なし）
+- 前回: 2026-09-08（第017号。CHANGELOG は v2.1.263 のままで新規バージョンなし。Platform リリースノートは 9/3 の ant CLI v1.30.0 が最新、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 が最新、anthropic.com/engineering も 4/23 から更新なし。いずれも既報のため速報は「該当なし」で執筆）
 - 前回: 2026-09-07（第016号。CHANGELOG は v2.1.263 のみ新規で、中身は「Bug fixes and reliability improvements」の1行のみ。v2.1.262 は CHANGELOG に項目がない。Platform リリースノートは 9/3 の ant CLI v1.30.0 から更新なし。anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 から新規なし。anthropic.com/engineering も 4/23 が最新で新規なし）
