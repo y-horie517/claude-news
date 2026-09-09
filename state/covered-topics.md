@@ -195,3 +195,13 @@
 - 2026-09-09 [速報] v2.1.265 `--plugin-dir` でプラグインフォルダを動的読み込み・プロンプトキャッシュ再利用の破壊を3件修正・`--worktree` 起動の並列チェックアウト高速化・`/model opus[1m]` の拒否修正・ツール結果のディスク保存1GB上限・プラグインパスのバックスラッシュでシンボリックリンク検査を回避できた不具合修正・非対話セッションの作業ディレクトリリセット修正・スラッシュコマンド候補の一覧表示（v2.1.264 は CHANGELOG に項目なし）
 - 2026-09-09 [課題] worktree を1本立ててメインチェックアウトが守られることを確認する — `.worktreeinclude` の効果、`Edit` のブロック、信頼ダイアログ・Git LFS・シンボリックリンクの詰まりどころ
 - 2026-09-09 [用語] `.worktreeinclude` / `worktree.baseRef`（fresh・head）/ `EnterWorktree`・`ExitWorktree` / `WorktreeCreate`・`WorktreeRemove` フック / `isolation: worktree` / `$ARGUMENTS[N]`・`$N`・`$name` / `${CLAUDE_SESSION_ID}`・`${CLAUDE_EFFORT}`・`${CLAUDE_SKILL_DIR}`・`${CLAUDE_PROJECT_DIR}` / `user-invocable`
+- 2026-09-10 [BP] 外部接続はリポジトリに宣言して配る — `.mcp.json`（`${VAR}`・`${VAR:-既定}`・`${CLAUDE_PROJECT_DIR}`・`timeout`）＋ `.claude/settings.json` の `enabledMcpjsonServers`/`disabledMcpjsonServers`/`permissions`、信頼→承認→権限の3関門、`--scope project`、stdio の `--` 区切り
+- 2026-09-10 [連載] 第13回 MCP — 外部サービスと繋ぐ — トランスポート4種（http/stdio/ws、sse は非推奨）、スコープ解決順（ローカル→プロジェクト→ユーザー→プラグイン→claude.ai コネクタ→`managedMcpServers`）、`/mcp` と `claude mcp login/logout`、ツール名 `mcp__server__tool`・リソース `@`・プロンプト `/`、ツール検索が既定オンでスキーマは遅延、CLI/MCP/Skill の使い分け
+- 2026-09-10 [TIPS] `/context all` で MCP ツール1つ1つのトークンを見る — `/mcp` で接続状態、`/context all` で費用の2手
+- 2026-09-10 [TIPS] 溢れるのは定義ではなく出力 — `MAX_MCP_OUTPUT_TOKENS` 既定 25,000、10,000 で警告。上げる前にサーバー側で列と行を絞る
+- 2026-09-10 [TIPS] `_meta["anthropic/requiresUserInteraction"]: true` で毎回必ず人に聞くツールを作る — auto/bypassPermissions でもプロンプトが出て allow ルールでもスキップされない（v2.1.199+）
+- 2026-09-10 [事例] 社内 PostgreSQL・Slack・Datadog の MCP を自作（Qiita、二次情報、2026-09-09）— read-only SELECT・100行上限・監査ログ、3本同時で起動+約1.3秒・メモリ+約170MB・呼び出し初回300ms/以降150ms、遅延初期化と結果フィルタリング
+- 2026-09-10 [事例] チーム開発の MCP スコープ設計（Zenn、二次情報、2026-01-06）— 全員＝プロジェクト、個人＝ローカル、ツール定義が 26.5k トークン（13.3%）を占めた計測。※現在はツール検索が既定オンで遅延読み込み
+- 2026-09-10 [速報] v2.1.267 `maxEffortLevel`（トップレベル/`modelSettings` 配下、最も低い上限が勝つ）・`--system-prompt-snapshot off`・MCP 起因のプロンプトキャッシュ破壊を多数修正・マーケットプレイスのバックスラッシュによる containment 回避の修正・5MB超セッション再開で並列ツール呼び出しが落ちる不具合の修正／v2.1.266 は `CLAUDE_CODE_USE_GATEWAY` の回帰修正のみ
+- 2026-09-10 [課題] `.mcp.json` を1本置いて信頼→承認→権限の3関門を観測する — `claude mcp serve` を stdio サーバーにして `⏸ Pending approval`、`disabledMcpjsonServers`（接続しない）と `permissions.deny`（接続するがツールが消える）の違い、`claude mcp reset-project-choices`
+- 2026-09-10 [用語] MCP のスコープ3種（local/project/user）と解決順 / `.mcp.json` のフィールド（`type`・`headersHelper`・`alwaysLoad`・`oauth`）/ `enableAllProjectMcpServers` / `MAX_MCP_OUTPUT_TOKENS`（25,000・警告10,000）/ `ENABLE_TOOL_SEARCH` / `mcp__` ルールに括弧を書くとスキップされる / 未信頼フォルダではリポジトリ内の承認が無視される（v2.1.196+）

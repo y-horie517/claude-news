@@ -36,7 +36,8 @@
 エージェントは速報セクションを書いたあと、確認した CHANGELOG の最新バージョンをここに記録する。
 次回はこのバージョンより新しいものだけを「速報」として扱う。
 
-- last_changelog_version: v2.1.265
-- last_checked_at: 2026-09-09（第018号。CHANGELOG に v2.1.265 が追加された。項目は多数で、`--plugin-dir` のフォルダ指定と動的読み込み、プロンプトキャッシュ再利用の破壊修正3件、`--worktree` 起動の並列チェックアウト高速化、`/model opus[1m]` の拒否修正、ツール結果のディスク保存1GB上限、プラグインパスのバックスラッシュによるシンボリックリンク検査回避の修正などを速報で扱った。v2.1.264 は CHANGELOG に項目なし。Platform リリースノートは 9/3 の ant CLI v1.30.0 のまま、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 のまま、anthropic.com/engineering も 4/23 から更新なし）
+- last_changelog_version: v2.1.267
+- last_checked_at: 2026-09-10（第019号。CHANGELOG に v2.1.266 と v2.1.267 が追加された。v2.1.266 は `CLAUDE_CODE_USE_GATEWAY` が単独で Cloud ゲートウェイのサインインを強制していた v2.1.265 の回帰修正1件のみ。v2.1.267 は項目が非常に多く、`maxEffortLevel` の追加、`--system-prompt-snapshot off` の追加、MCP／コネクタ／`/model` 切替／セッション再開に起因するプロンプトキャッシュ破壊の修正が10件以上、マーケットプレイスのバックスラッシュによる containment 検査回避の修正、5MB 超セッション再開で並列ツール呼び出しとフック出力が落ちる不具合の修正などを速報で扱った。Platform リリースノートは 9/3 の ant CLI v1.30.0 と Google Cloud のper-message effort ベータのまま、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 のまま、anthropic.com/engineering も 4/23 から更新なし。claude.com/customers は 9/4 の Carvana が最新で既報）
+- 前回: 2026-09-09（第018号。CHANGELOG に v2.1.265 が追加された。項目は多数で、`--plugin-dir` のフォルダ指定と動的読み込み、プロンプトキャッシュ再利用の破壊修正3件、`--worktree` 起動の並列チェックアウト高速化、`/model opus[1m]` の拒否修正、ツール結果のディスク保存1GB上限、プラグインパスのバックスラッシュによるシンボリックリンク検査回避の修正などを速報で扱った。v2.1.264 は CHANGELOG に項目なし。Platform リリースノートは 9/3 の ant CLI v1.30.0 のまま、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 のまま、anthropic.com/engineering も 4/23 から更新なし）
 - 前回: 2026-09-08（第017号。CHANGELOG は v2.1.263 のままで新規バージョンなし。Platform リリースノートは 9/3 の ant CLI v1.30.0 が最新、anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 が最新、anthropic.com/engineering も 4/23 から更新なし。いずれも既報のため速報は「該当なし」で執筆）
 - 前回: 2026-09-07（第016号。CHANGELOG は v2.1.263 のみ新規で、中身は「Bug fixes and reliability improvements」の1行のみ。v2.1.262 は CHANGELOG に項目がない。Platform リリースノートは 9/3 の ant CLI v1.30.0 から更新なし。anthropic.com/news は 9/1 の Fable 5.1 / Mythos 5.1 から新規なし。anthropic.com/engineering も 4/23 が最新で新規なし）
