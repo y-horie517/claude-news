@@ -236,3 +236,13 @@
 - 2026-09-13 [速報] v2.1.270 — 読み取り専用の git コマンドが長時間セッション後に許可を求める v2.1.269 の回帰を修正（1件のみ）。あわせて前号で扱えなかった v2.1.269 の項目（日本語等の単語区切りなし言語でのプロンプト候補修正、`Edit()` deny と書き込みパス検査が Bash `tee` にも適用、`permission_denials` がパス指定 deny の Read/Edit/Write を落としていた修正、claude.ai 同期スキルの `anthropic-skills:<name>` 化、プラグインアーカイブの権限修正、VS Code の Hooks/Permission rules ダイアログ）
 - 2026-09-13 [課題] Claude に「壊れていること」を自分で見つけさせる — Next.js にビルドは通るが実行時に落ちるエラーを仕込み、`/ui-check /` でコンソールから読み取った文言を根拠に検出・修正できるか確認する
 - 2026-09-13 [用語] Claude in Chrome 拡張 1.0.36+ / native messaging host 設定ファイル（`com.anthropic.claude_code_browser_extension.json`）/ ブラウザツール（`read_page`・`get_page_text`・`find`・`tabs_context_mcp`・`browser_batch`）/ アップロードの3制限（Read 拒否・合計10MB・複数ハードリンク不可）/ 設定4スコープと管理設定 / Settings Error・Settings Warning・Configuration error
+- 2026-09-14 [BP] クラウドで動く状態をリポジトリに入れて渡す — 届く/届かないの対照表、setup script（VMのプロビジョニング・キャッシュ・5分・exit 0 必須）と SessionStart フック（プロジェクト準備・毎回走る）の分担、`.claude/settings.json` の `startup|resume` フック＋`scripts/setup-session.sh` の `CLAUDE_CODE_REMOTE` 判定
+- 2026-09-14 [連載] 第17回 サブスクリプションと利用形態の使い分け — 「どこで動くか」の3分類（自分のマシン／Anthropic のクラウド／自社インフラ）、面ごとの向き不向き、Remote Control とクラウドセッションの違い、`--cloud` はリモートの現在ブランチを clone・ハンドオフは一方通行、`--teleport` の4要件、claude.ai サインイン必須の機能一覧とプラン別表（Code Review は Team+、computer use/Dispatch は Pro/Max）、IP 許可リストでクラウドセッションが全滅する
+- 2026-09-14 [TIPS] `claude -p "…" --cloud <session-id>` でどのマシンからでも追伸を送る — キューに入れて即終了、`--output-format json` で `{ok, session_id, url}`
+- 2026-09-14 [TIPS] `CCR_FORCE_BUNDLE=1 claude --cloud` でローカルリポジトリを束ねて送る — 100MB以下・untracked は含まれない・`.env`/`*.pem` の未コミット変更は除外・非 GitHub リモートには push で戻せない
+- 2026-09-14 [TIPS] `/autofix-pr` でブランチ上から PR の auto-fix を1手で有効化 — `gh` で PR を検出し web セッションを立てる。GitHub App 必須、`issue_comment` トリガーの自動化があるリポジトリでは使わない
+- 2026-09-14 [事例] クラウドセッションの中では Remote Control が使えない（Qiita / @kai_kou、二次情報、2026-07-12）— `Error: Remote Control is not available inside a cloud session.`、`--help` すら通らず環境チェックが CLI 処理より前に走る
+- 2026-09-14 [事例] ナレッジワークのプラン選定（Zenn / minodisk、二次情報、2026-03-06）— 4フェーズ（API キー→個人 Pro/Max→Team Premium→Team Standard で全社統合）、優先順位を「自由度→支払い管理→コスト管理」と明示、個人 Max の乱立と API 直利用は非推奨
+- 2026-09-14 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.270 のまま、Platform は 9/10、news は 9/10、engineering は 4/23 から更新なし
+- 2026-09-14 [課題] クラウドセッションを「開いた瞬間に動く」状態にする — 壊れている状態を観測→SessionStart フック追加→ローカルで `exit=0` 確認→push→Claude の初手が `npm run build` になるか
+- 2026-09-14 [用語] クラウドセッションの3つの実行先 / setup script の環境キャッシュ（約7日・再実行条件）/ `CLAUDE_CODE_REMOTE` / `CCR_FORCE_BUNDLE` / プリインストール（Node 20/21/22・PostgreSQL 16・Redis 7.0）/ `check-tools` / セキュリティプロキシと bun の相性問題 / ネットワークアクセス4段階（None・Trusted・Full・Custom）
