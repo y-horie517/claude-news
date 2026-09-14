@@ -246,3 +246,14 @@
 - 2026-09-14 [速報] 前回チェック以降の新規発表なし — CHANGELOG は v2.1.270 のまま、Platform は 9/10、news は 9/10、engineering は 4/23 から更新なし
 - 2026-09-14 [課題] クラウドセッションを「開いた瞬間に動く」状態にする — 壊れている状態を観測→SessionStart フック追加→ローカルで `exit=0` 確認→push→Claude の初手が `npm run build` になるか
 - 2026-09-14 [用語] クラウドセッションの3つの実行先 / setup script の環境キャッシュ（約7日・再実行条件）/ `CLAUDE_CODE_REMOTE` / `CCR_FORCE_BUNDLE` / プリインストール（Node 20/21/22・PostgreSQL 16・Redis 7.0）/ `check-tools` / セキュリティプロキシと bun の相性問題 / ネットワークアクセス4段階（None・Trusted・Full・Custom）
+
+- 2026-09-15 [BP] 検証つきの反復をスクリプトに固定する（ダイナミックワークフロー）— `ultracode` キーワードか「ワークフローで」で起動、`/workflows` の `p`/`x`/`s`、`.claude/workflows/` と `~/.claude/workflows/`、`agent()`/`parallel()`/`pipeline()` と `schema`、`null` の扱い、`workflowSizeGuideline`（small=5体未満・large=50体未満）とランタイム上限（同時16体・1回1,000体・1リスト4,096件）
+- 2026-09-15 [連載] 第18回 テスト駆動で Claude に書かせる — trust-then-verify gap、縛りの4段（プロンプト/`/goal`/Stopフック/検証サブエージェント）、`/goal` の条件3要素（測れる終状態・証明のしかた・変えてはいけないもの）と4,000文字、評価役はツールを呼ばない、3評決と未達の理由が次ターンの指示になる、Writer/Reviewer をテストと実装に適用
+- 2026-09-15 [TIPS] `omitClaudeMd` をサブエージェントのフロントマターと `--agents` JSON に書ける（v2.1.271）— ユーザー/プロジェクト/ローカルの CLAUDE.md を読まずに起動。管理ポリシーのファイルは読み込まれたまま
+- 2026-09-15 [TIPS] コンパクション後に背景コマンド（dev server・watch）が二重起動する不具合が v2.1.271 で修正
+- 2026-09-15 [TIPS] Monitor のウォッチが必ず期限付きに（最長30分・`-p` では10分、v2.1.271）— 無期限の `persistent` は廃止、期限で再武装の通知が行く
+- 2026-09-15 [事例] TDD を CLAUDE.md とサブエージェントの二段で縛った報告（Zenn / 井本賢、二次情報、2026-02-24）— 実装先行バイアスは学習データ由来、`.claude/agents/` にテスト作成役・実装役・リファクタ役の3体を分離、テスト質の下限（正常系/異常系/境界 各1件・`should X when Y`）。定量データなし
+- 2026-09-15 [事例] Gemcook 全社導入までの意思決定と歴史（Zenn / soso、二次情報、2026-03-12）— 2023/2 Copilot 全配布 → 2024-25 Cline/Cursor/Windsurf 並行検証 → 2025/1 Devin Team → 2025/2 Claude Code 試験 → 2026/2 全社導入。選定理由3点、教訓は「1〜2か月試したら決める」
+- 2026-09-15 [速報] v2.1.271 `omitClaudeMd`・auto mode ＋サンドボックスのコマンド単位 `allowed_domains`・`claude plugin install/update` の `--accept-command <sha256>`・Bash 権限検査の抜け穴修正複数・Remote セッションの fast mode・背景コマンド二重起動修正・Monitor の期限必須化・ワークフローの使用量上限で一時停止＆自動継続・既定サイズが Pro で `small`／`medium` が15→10体・`--resume` の修正複数（`[1m]` 消失・`/artifacts` 添付消失・ファイル読み取り追跡の持ち越し）
+- 2026-09-15 [課題] テストを先に書かせ `/goal` で通させる — 赤を確認してから条件を置く、`git diff --stat` でテストファイルが不変か検証、評価役がツールを呼ばないこと・Manual モードの承認・ツール未使用ターンでのループ打ち切り・`/clear` で goal が消えること
+- 2026-09-15 [用語] ダイナミックワークフロー / `ultracode` キーワードと `/effort ultracode` / `meta` ブロック（`name`・`description`・`phases`）/ `agent()`・`parallel()`・`pipeline()`・`phase()`・`log()`・`args` / `Date.now()`・`Math.random()`・`new Date()`・`import()` が禁止される理由（再開時の再生） / `MAX_STRUCTURED_OUTPUT_RETRIES` / `/goal` の3評決と `CLAUDE_CODE_GOAL_CHECKIN_MINUTES`
