@@ -4,7 +4,7 @@ Claude / Claude Code の使い方を毎日学ぶための、**自動生成され
 
 | | 配信 | 読了 |
 |---|---|---|
-| 🌅 **Claude Daily** | 毎朝 8:00（07:30 生成） | 12〜15分 |
+| 🌅 **Claude Daily** | 毎朝 8:00（07:30 生成） | 10〜12分 |
 
 1号の中身:
 
@@ -46,7 +46,8 @@ flowchart TD
 | パス | 役割 |
 |---|---|
 | `prompts/daily.md` | エージェントの実行手順。**記事の中身を変えたいときはここを編集して push する** |
-| `prompts/style-guide.md` | 文体・図の作法・コードの作法・品質ガードレール（出典必須、推測禁止など） |
+| `prompts/style-guide.md` | 文体・**読みやすさの規約**・図の作法・コードの作法・品質ガードレール（出典必須、推測禁止など） |
+| `scripts/readability-check.py` | 原稿が読みやすさの規約を守っているかの機械チェック（文長・段落長・字数配分・図表の数・HTMLタグ混入）。違反があれば exit 1 |
 | `template/digest.html` | Artifact のデザインテンプレート |
 | `template/COMPONENTS.md` | テンプレートのクラス早見表と、節番号／ラベルの一覧 |
 | `state/curriculum.md` | 深掘り連載のロードマップ（全43回）。上から順に消化する |
@@ -82,7 +83,8 @@ flowchart TD
 
 ## カスタマイズの例
 
-- 分量を変える → `prompts/daily.md` の「分量と密度の基準」
+- 分量を変える → `prompts/style-guide.md` の「節ごとの字数配分」と `scripts/readability-check.py` の閾値（**両方を同じ値にする**）
+- 読みやすさの基準を変える → 同上。文長・段落長・太字の上限は同スクリプト冒頭の定数
 - 難易度を上げ下げする → `prompts/style-guide.md` の「読者プロフィール」
 - 重点領域を変える → 同上（現在は **Claude Code での開発** と **チーム／業務への展開**）
 - デザインを変える → `template/digest.html` の `:root` トークン

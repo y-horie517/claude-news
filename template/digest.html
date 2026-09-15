@@ -15,6 +15,7 @@
     --accent-base:  #1c5480;
     --accent-ink: #ffffff;
     --mark:       #f2e6c8;
+    --bad:        #a23a2f;
     --shadow:     0 1px 2px rgba(22,27,30,.05), 0 8px 24px -12px rgba(22,27,30,.18);
 
     --f-display: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
@@ -37,6 +38,7 @@
       --accent-base: #7cb8e8;
       --accent-ink:#10151a;
       --mark:      #3b3520;
+      --bad:       #e0857a;
       --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
     }
   }
@@ -52,6 +54,7 @@
     --accent-base: #7cb8e8;
     --accent-ink:#10151a;
     --mark:      #3b3520;
+    --bad:       #e0857a;
     --shadow:    0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
   }
 
@@ -117,6 +120,44 @@
   .card-h::before { content: ""; width: .5rem; height: .5rem; background: var(--accent);
                     border-radius: 50%; flex: none; }
   .card.task { border-left: 3px solid var(--accent); }
+
+  /* ── 節の要点（地の文を読まなくても分かる入口）──────────── */
+  .keypoints { margin: 0; padding: .1rem 0 .1rem 1rem; list-style: none;
+               border-left: 2px solid var(--accent); display: flex; flex-direction: column; gap: .45rem;
+               font-size: .98rem; font-weight: 500; color: var(--ink); }
+  .keypoints li { position: relative; }
+
+  /* ── 数値タイル（事例の実績値など。地の文に数字を埋めない）── */
+  .stats { display: grid; gap: .6rem; margin: 0;
+           grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+  .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+          padding: .75rem .85rem; display: flex; flex-direction: column; gap: .2rem; }
+  .stat b { font-family: var(--f-mono); font-size: 1.5rem; font-weight: 600; line-height: 1.1;
+            color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── 失敗と正解の対比（アンチパターン）────────────────────── */
+  .vs { display: grid; gap: .7rem; grid-template-columns: 1fr; }
+  /* 2カラムにするのは、本文の測り幅（--measure）をはみ出せる広さのときだけ。
+     狭いまま2列にするとコードが折り返して読めなくなる */
+  @media (min-width: 64rem) {
+    .vs { grid-template-columns: 1fr 1fr; width: calc(100% + 8rem); margin-right: -8rem; }
+  }
+  .vs > div { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+              padding: .8rem .9rem; display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+  .vs .bad  { border-left: 3px solid var(--bad); }
+  .vs .good { border-left: 3px solid var(--accent); }
+  .vs h4 { margin: 0; font-family: var(--f-body); font-size: .9rem; font-weight: 700; }
+  .vs .bad h4::before  { content: "✕ "; color: var(--bad); }
+  .vs .good h4::before { content: "✓ "; color: var(--accent); }
+  .vs pre { font-size: .78rem; }
+
+  /* ── 用語ミニ表（括弧の挿入句をここに逃がす）──────────────── */
+  .terms { margin: 0; display: grid; gap: .1rem .9rem; grid-template-columns: 1fr;
+           font-size: .88rem; border-top: 1px solid var(--rule-soft); padding-top: .6rem; }
+  @media (min-width: 40rem) { .terms { grid-template-columns: auto 1fr; } }
+  .terms dt { font-weight: 700; color: var(--ink); }
+  .terms dd { margin: 0 0 .35rem; color: var(--muted); }
 
   /* ── 図 ─────────────────────────────────────────────────── */
   figure { margin: 0; display: flex; flex-direction: column; gap: .5rem; }
